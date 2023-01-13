@@ -1,0 +1,13 @@
+
+server:
+  port: ${PORT:8100}
+spring:
+  datasource:
+    url: jdbc:h2:mem:transferencia
+    driverClassName: org.h2.Driver
+    username: tokioadmin
+    password: Tok@2023
+  jpa: 
+    database-platform: org.hibernate.dialect.H2Dialect
+  h2: 
+    console.enabled: true

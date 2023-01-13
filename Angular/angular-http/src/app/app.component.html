@@ -1,0 +1,64 @@
+<nav aria-label="breadcrumb">
+</nav>
+<div class="container">
+  <div class="card list-transferencia">
+    <h5 class="card-header">Lista de transferencias</h5>
+    <div class="card-body">
+      <table class="table">
+          <thead>
+            <tr>
+              <th class="center" scope="col">Conta de origem</th>
+              <th class="center" scope="col">Conta de destino</th>
+              <th class="center" scope="col">Valor de transferencia</th>
+              <th class="center" scope="col">Taxa</th>
+              <th class="center" scope="col">Data do agendamento</th>
+              <th class="center" scope="col">Data de Transferencia</th>
+
+            </tr>
+          
+          </thead>
+          <tbody>
+             <tr *ngFor="let i of result">
+
+              <td class="center">{{i.contaOrigem}}</td> 
+              <td class="center">{{i.contaDestino}}</td>
+              <td class="center">{{(i.valorTransferencia).toFixed(2)}}</td>
+              <td class="center">{{(i.taxa).toFixed(2)}}</td> 
+              <td class="center">{{i.dataAgendamento}}</td> 
+              <td class="center">{{i.dataTransferencia}}</td> 
+              <td>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+    </div>
+  </div>
+
+  <div class="card add-transferencia">
+      <h5 class="card-header">Adicionar transferencia</h5>
+      <div class="card-body">
+          <form id="add-form" (ngSubmit)="f.form.valid && salvarTransferencia(f)" #f="ngForm" novalidate>
+            <div class="form-group">
+                <label for="contaOrigem">Conta de origem</label>
+                <input type="text" [(ngModel)]="transferencia.contaOrigem" id="contaOrigem" name="contaOrigem" #contaOrigem="ngModel" required class="form-control" [ngClass]="{ 'is-invalid': f.submitted && contaOrigem.invalid }" placeholder="Digite a conta de origem">
+
+            </div>
+            <div class="form-group">
+                <label for="contaDestino">Conta de destino</label>
+                <input type="text" [(ngModel)]="transferencia.contaDestino" id="contaDestino" name="contaDestino" #contaDestino="ngModel" required class="form-control" [ngClass]="{ 'is-invalid': f.submitted && contaDestino.invalid }" placeholder="Digite a conta de Destino">
+
+            </div>
+            <div class="form-group">
+                <label for="valorTransferencia">Valor de transferencia</label>
+                <input type="number" [(ngModel)]="transferencia.valorTransferencia" id="valorTransferencia" name="valorTransferencia" #valorTransferencia="ngModel" required class="form-control" [ngClass]="{ 'is-invalid': f.submitted && valorTransferencia.invalid }" placeholder="Digite o valor da Transferencia">
+                </div>
+
+                <div class="form-group">
+                  <label for="dataTransferencia">Data de transferencia</label>
+                  <input type="date" [(ngModel)]="transferencia.dataTransferencia" id="dataTransferencia" name="dataTransferencia" #dataTransferencia="ngModel" required class="form-control" [ngClass]="{ 'is-invalid': f.submitted && dataTransferencia.invalid }" placeholder="Digite o data da Transferencia">
+                  </div>
+
+            <button type="submit" onClick="window.location.reload()" class="btn btn-primary btn-add-car">Salvar</button>
+            <button type="reset" class="btn btn-secondary btn-add-car" >Cancelar</button>
+
+            
